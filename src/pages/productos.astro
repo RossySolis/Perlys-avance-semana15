@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/footer.astro';
+import '../styles/estilos.css';
+---
+<Layout>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"/>
+  
+  <main style="padding-top: 70px;"></main>
+  <main class="productos">
+
+    <!-- Imagen grande horizontal -->
+    <div class="img-container mb-4">
+      <img src="img/perlys.jpg" alt="Nuestra Empresa" class="img-fluid rounded shadow">
+    </div>
+    <!-- Explorar más sección -->
+    <section class="explore py-5" data-aos="fade-up">
+  <h2 class="text-center mb-4">Explore More</h2>
+  <div class="tabs text-center mb-4">
+    <button class="active btn btn-outline-primary mx-1">Poleras</button>
+    <a href="productos.html"><button class="btn btn-outline-primary mx-1">Casacas</button></a>
+    <button class="btn btn-outline-primary mx-1">Conjuntos</button>
+    <button class="btn btn-outline-primary mx-1">Pantalones</button>
+    <button class="btn btn-outline-primary mx-1">Polos</button>
+    <button class="btn btn-outline-primary mx-1">Vestidos</button>
+    <button class="btn btn-outline-primary mx-1">Importaciones</button>
+  </div>
+
+  <div class="gallery">
+    <div class="grid-productos row row-cols-1 row-cols-md-3 g-4">
+      <div class="card col" data-aos="flip-left">
+        <img src="img/Conjunto Short.jpeg" alt="Conjunto Short para niña" class="card-img-top">
+      </div>
+      <div class="card col" data-aos="flip-left" data-aos-delay="100">
+        <img src="img/Rumbera.jpeg" alt="Conjunto Rumbera niña" class="card-img-top">
+      </div>
+      <div class="card col" data-aos="flip-left" data-aos-delay="200">
+        <img src="img/Conjunto Araña.jpeg" alt="Conjunto Araña para niña" class="card-img-top">
+      </div>
+      <div class="card col" data-aos="flip-left" data-aos-delay="300">
+        <img src="img/Panty con diseño.jpeg" alt="Panty con diseño para niña" class="card-img-top">
+      </div>
+      <div class="card col" data-aos="flip-left" data-aos-delay="400">
+        <img src="img/Short.jpeg" alt="Short para niña" class="card-img-top">
+      </div>
+      <div class="card col" data-aos="flip-left" data-aos-delay="500">
+        <img src="img/Overol.jpeg" alt="Overol para niña" class="card-img-top">
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Botones flotantes -->
+    <div class="social-float">
+      <a href="https://www.facebook.com/p/Perlys-Moda-100064165537001/?locale=uk_UA" target="_blank" class="facebook">
+        <i class="fa-brands fa-facebook"></i>
+      </a>
+      <a href="https://instagram.com" target="_blank" class="instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://wa.me/51940042294" target="_blank" class="whatsapp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+      <a href="https://www.tiktok.com/@modaperlys?_t=8p60CYtJXOQ&_r=1" target="_blank" class="tiktok">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>  
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  </main>
+
+  <style>
+    @import '../styles/productos.css';
+  </style>  
+
+  <Footer />
+</Layout>

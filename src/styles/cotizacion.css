@@ -1,0 +1,123 @@
+/* === cotizacion.css === */
+
+/* Fondo general animado */
+.cotizacion-page {
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(-45deg, #ffdde1, #ee9ca7, #fad0c4, #fbc2eb);
+  background-size: 400% 400%;
+  animation: fondoAnimado 15s ease infinite;
+  color: #333;
+  min-height: 100vh;
+}
+
+/* Animación de fondo */
+@keyframes fondoAnimado {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Animación fade general */
+.animate-fade {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+.delay-03 { animation-delay: 0.3s; }
+.delay-05 { animation-delay: 0.5s; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Encabezado */
+.cotizacion-page header {
+  background: linear-gradient(135deg, #b30059, #ff6fa0, #ff99cc);
+  color: #fff;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  animation: fadeIn 1.5s ease;
+}
+
+/* Tarjeta del formulario */
+.cotizacion-page .card {
+  border-radius: 20px;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.cotizacion-page .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* Labels */
+.cotizacion-page label {
+  font-weight: 600;
+  color: #b30059;
+}
+
+/* Inputs */
+.cotizacion-page input[type="text"],
+.cotizacion-page input[type="number"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  transition: all 0.3s ease;
+}
+.cotizacion-page input[type="text"]:focus,
+.cotizacion-page input[type="number"]:focus {
+  border-color: #d62dc8;
+  box-shadow: 0 0 8px rgba(214, 45, 200, 0.3);
+  outline: none;
+}
+
+/* Placeholder animado */
+.cotizacion-page input::placeholder {
+  color: #aaa;
+  font-style: italic;
+  transition: all 0.3s ease;
+}
+.cotizacion-page input:focus::placeholder {
+  color: #b30059;
+  font-weight: bold;
+}
+
+/* Botón */
+.cotizacion-page .enviar-btn {
+  background-color: #d62dc8;
+  border-radius: 30px;
+  padding: 10px 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  color: #fff;
+}
+.cotizacion-page .enviar-btn:hover {
+  background-color: #b30059;
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(179, 0, 89, 0.4);
+}
+
+/* Footer */
+.cotizacion-page footer {
+  background: #2c003e;
+  color: #fff;
+  text-align: center;
+  padding: 25px 10px;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cotizacion-page .card {
+    padding: 20px;
+  }
+}

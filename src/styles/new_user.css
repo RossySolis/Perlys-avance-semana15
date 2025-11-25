@@ -1,0 +1,151 @@
+/* === new-user.css === */
+
+/* Fuente y fondo animado */
+.new_user {
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(-45deg, #ffdde1, #ee9ca7, #fad0c4, #fbc2eb);
+  background-size: 400% 400%;
+  animation: fondoAnimado 15s ease infinite;
+}
+
+@keyframes fondoAnimado {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Formulario */
+.new_user .form-container {
+  background: rgba(255, 255, 255, 0.5); /* más transparente para notar el blur */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* soporte Safari */
+  border-radius: 25px;
+  padding: 30px;
+  max-width: 400px;
+  width: 100%;
+  animation: formFadeIn 1s ease forwards;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.new_user .form-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(70, 14, 14, 0.25);
+}
+
+@keyframes formFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.new_user .form-container h2 {
+  color: #c72fbaf0;
+  animation: fadeInDown 1s ease;
+  margin-bottom: 20px;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.new_user input.form-control {
+  border-radius: 10px;
+  border: 1px solid #d62dc8;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.new_user input.form-control:focus {
+  border-color: #ff6fa0;
+  box-shadow: 0 0 8px rgba(214, 45, 200, 0.5);
+  outline: none;
+}
+
+/* Botón degradado */
+.new_user .btn-gradient {
+  background: linear-gradient(135deg, #b30059, #ff6fa0);
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-weight: 600;
+  color: #fff;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.new_user .btn-gradient:hover {
+  background: linear-gradient(135deg, #ff6fa0, #b30059);
+  transform: scale(1.05);
+}
+
+/* Links */
+.new_user a {
+  color: #d62dc8;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.new_user a:hover {
+  text-decoration: underline;
+  color: #ff6fa0;
+}
+.new_user .social-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1000;
+}
+
+.new_user .social-float a {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 22px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  text-decoration: none;
+}
+
+.new_user .social-float a:hover {
+  transform: scale(1.15);
+  opacity: 0.9;
+}
+
+/* Colores personalizados */
+.new_user .facebook { background: #1877f2; }
+.new_user .instagram { background: #e4405f; }
+.new_user .whatsapp { background: #25d366; }
+.new_user .tiktok { background: #000; }
+
+/* Colores de texto dentro del formulario */
+.new_user .form-container label {
+    color: #c41993; 
+}
+.new_user .form-container p {
+    color: #333; 
+}
+.new_user .form-container input,
+.new_user .form-container textarea {
+    color: #333;
+    background-color: #fff; 
+}
+
+/* Placeholder más oscuro */
+.new_user .form-container input::placeholder,
+.new_user .form-container textarea::placeholder {
+    color: #999;
+}
+
+
+.new_user .form-container button {
+    color: #fff;
+}

@@ -1,0 +1,176 @@
+/* === ini_sesion.css === */
+
+/* Fuente general y fondo animado */
+.ini_sesion {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(-45deg, #ffdde1, #ee9ca7, #fad0c4, #fbc2eb);
+    background-size: 400% 400%;
+    animation: fondoAnimado 15s ease infinite;
+    min-height: 100vh;
+}
+
+/* Animación de fondo */
+@keyframes fondoAnimado {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Formulario */
+.ini_sesion .form-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: formFadeIn 1.5s ease forwards;
+}
+
+.ini_sesion .form-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+}
+
+/* Animación de formulario */
+@keyframes formFadeIn {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Títulos */
+.ini_sesion h2 {
+    color: #ffffff;
+    font-weight: 700;
+    animation: fadeInDown 1s ease forwards;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Animación de título */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Botón */
+.ini_sesion .btn-gradient {
+    background: linear-gradient(135deg, #f78cc9, #fcd1e0);
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 25px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.ini_sesion .btn-gradient:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(214,45,200,0.4);
+}
+
+/* Inputs */
+.ini_sesion input.form-control {
+    border-radius: 15px;
+    border: 1px solid #d62dc8;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.ini_sesion input.form-control:focus {
+    border-color: #f78cc9;
+    box-shadow: 0 0 10px rgba(247,140,201,0.3);
+    outline: none;
+}
+
+/* Links personalizados */
+.ini_sesion .custom-link {
+    color: #d62dc8;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.ini_sesion .custom-link:hover {
+    text-decoration: underline;
+    color: #f78cc9;
+}
+
+/* Footer */
+.ini_sesion .footer {
+    background: #2c003e;
+    color: #fff;
+    text-align: center;
+    padding: 30px 10px;
+}
+
+.ini_sesion .footer h3 {
+    color: #f78cc9;
+    margin-bottom: 15px;
+}
+
+.ini_sesion .footer p, .footer a {
+    color: #fff;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Botones flotantes de redes sociales */
+.ini_sesion .social-float {
+    position: fixed;
+    top: 40%;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 2000;
+}
+
+.ini_sesion .social-float a {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 24px;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s, opacity 0.3s, box-shadow 0.3s;
+}
+
+.ini_sesion .social-float a img {
+    width: 60%;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.ini_sesion .social-float a:hover {
+    transform: scale(1.2) rotate(5deg);
+    opacity: 0.9;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.ini_sesion .social-float a:hover img {
+    transform: scale(1.2);
+}
+
+/* Colores redes sociales */
+.ini_sesion .facebook { background-color: #1877f2; }
+.ini_sesion .instagram { background-color: #e4405f; }
+.ini_sesion .whatsapp { background-color: #25d366; }
+.ini_sesion .tiktok { background-color: #000000; }
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .ini_sesion .form-container {
+        padding: 20px;
+        width: 90%;
+    }
+}

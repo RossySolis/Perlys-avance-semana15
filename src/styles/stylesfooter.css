@@ -1,0 +1,38 @@
+.footer {
+  background: #222;              /* Fondo oscuro */
+  color: var(--light, #fff);     /* Texto claro (usa blanco si no existe la variable) */
+  padding: 28px 16px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto 8px;
+  display: flex;
+  gap: 24px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.footer h3 {
+  margin: 0 0 8px;
+}
+
+.copy {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+/* --- enlaces del footer --- */
+.footer a {
+  color: #fff;                  /* color blanco */
+  text-decoration: none;        /* sin subrayado */
+  transition: opacity 0.3s ease;
+}
+
+.footer a:hover,
+.footer a:focus {
+  opacity: 0.8;                 /* efecto suave al pasar el cursor */
+  text-decoration: underline;   /* opcional */
+}

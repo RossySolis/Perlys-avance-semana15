@@ -1,0 +1,117 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/estilos.css';
+import Footer from '../components/footer.astro';
+---
+
+<Layout>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"/>
+<main style="padding-top: 70px;"></main>
+<main class="nosotros">
+
+  <!-- Hero Section -->
+  <section class="py-5 text-center bg-primary text-white">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Sobre Nosotros</h1>
+      <p class="lead">Tradición y calidad en cada detalle</p>
+    </div>
+  </section>
+
+  <!-- Contenido principal -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row align-items-center">
+
+        <!-- Imagen -->
+        <div class="col-md-6 mb-4 mb-md-0">
+          <img src="img/perlys.jpg" alt="Nuestra Empresa" class="img-fluid rounded shadow">
+        </div>
+
+        <!-- Texto -->
+        <div class="col-md-6">
+          <h2 class="fw-bold">Nuestra Historia</h2>
+          <p>
+            En <strong>Perly's</strong>, somos una empresa familiar dedicada a la moda infantil, especializada en ropa para niñas. Nacimos con el propósito de ofrecer prendas que combinan estilo, comodidad y calidad, pensando siempre en el bienestar y la alegría de las más pequeñas del hogar.
+          </p>
+          <p>
+            A lo largo de los años, hemos crecido manteniendo nuestros valores familiares, brindando atención cercana y diseños pensados con cariño. Cada prenda transmite dulzura, confianza y personalidad.
+          </p>
+          <a href="productos.html" class="btn btn-primary mt-3" style="background-color: #d62dc8; border-radius: 30px; padding: 10px 20px;">Ver Productos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Valores -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center fw-bold mb-5">Nuestros Valores</h2>
+      <div class="row text-center">
+
+        <!-- Valor 1 -->
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm h-100 border-0">
+            <div class="card-body">
+              <i class="bi bi-award-fill fs-1 text-primary mb-3"></i>
+              <h5 class="card-title fw-bold">Calidad</h5>
+              <p class="card-text">
+                Prendas confeccionadas con materiales de primera, garantizando durabilidad, comodidad y diseño moderno.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Valor 2 -->
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm h-100 border-0">
+            <div class="card-body">
+              <i class="bi bi-heart-fill fs-1 text-danger mb-3"></i>
+              <h5 class="card-title fw-bold">Tradición</h5>
+              <p class="card-text">
+                Empresa familiar que transmite amor, dedicación y esfuerzo en cada prenda desde nuestros inicios.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Valor 3 -->
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm h-100 border-0">
+            <div class="card-body">
+              <i class="bi bi-shield-check fs-1 text-success mb-3"></i>
+              <h5 class="card-title fw-bold">Confianza</h5>
+              <p class="card-text">
+                Relación cercana con nuestras clientas, brindando seguridad, transparencia y compromiso en cada compra.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+    <!-- Botones flotantes -->  
+    <div class="social-float">
+      <a href="https://www.facebook.com/p/Perlys-Moda-100064165537001/?locale=uk_UA" target="_blank" class="facebook">
+        <i class="fa-brands fa-facebook"></i>
+      </a>
+      <a href="https://instagram.com" target="_blank" class="instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://wa.me/51940042294" target="_blank" class="whatsapp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+      <a href="https://www.tiktok.com/@modaperlys?_t=8p60CYtJXOQ&_r=1" target="_blank" class="tiktok">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>  
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</main>
+  <style>
+    @import '../styles/nosotros.css';
+  </style>  
+<Footer />
+  </Layout>

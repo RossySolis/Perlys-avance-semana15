@@ -1,0 +1,144 @@
+/* === contacto.css === */
+
+/* Fuente y fondo general */
+.contacto-page{
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(-45deg, #ffdde1, #ee9ca7, #fad0c4, #fbc2eb);
+  background-size: 400% 400%;
+  animation: fondoAnimado 15s ease infinite;
+  color: #d4ccdb;
+
+
+
+}
+
+/* Animación de fondo */
+@keyframes fondoAnimado {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Hero Contacto */
+.contacto-page .bg-gradient {
+  background: linear-gradient(135deg, #b30059, #ff6fa0, #ff99cc);
+  color: #ffffff;
+  animation: fadeInHero 1.5s ease;
+}
+
+@keyframes contacto-fadeInHero {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Formulario */
+.contacto-page .contact-form {
+  background: rgba(255, 255, 255, 0.95);
+  animation: formFadeIn 1.2s ease forwards;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contacto-page .contact-form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
+
+@keyframes contacto-formFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.contacto-page .contact-form h3 {
+  color: #d62dc8;
+  animation: fadeInDown 1s ease;
+}
+
+@keyframes contacto-fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.contacto-page .contact-form input,
+.contacto-page .contact-form textarea {
+  border-radius: 10px;
+  border: 1px solid #d62dc8;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.contacto-page .contact-form input:focus,
+.contacto-page .contact-form textarea:focus {
+  border-color: #ff6fa0;
+  box-shadow: 0 0 8px rgba(214, 45, 200, 0.5);
+  outline: none;
+}
+
+/* Botón de envío */
+.contacto-page .contact-form button {
+  background-color: #d62dc8;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-weight: 600;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.contacto-page .contact-form button:hover {
+  background-color: #ff6fa0;
+  transform: scale(1.05);
+}
+
+/* Sección de contacto directo */
+.contacto-page section.bg-light h3 {
+  color: #d62dc8;
+  animation: fadeInDown 1s ease;
+}
+
+.contacto-page section.bg-light p {
+  font-size: 1.1rem;
+  animation: fadeInUp 1s ease;
+}
+
+@keyframes contacto-fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === BOTONES FLOTANTES DERECHA === */
+.contacto-page .social-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1000;
+}
+
+.contacto-page .social-float a {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 22px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  text-decoration: none;
+}
+
+.contacto-page .social-float a:hover {
+  transform: scale(1.15);
+  opacity: 0.9;
+}
+
+/* Colores personalizados */
+.contacto-page .facebook { background: #1877f2; }
+.contacto-page .instagram { background: #e4405f; }
+.contacto-page .whatsapp { background: #25d366; }
+.contacto-page .tiktok { background: #000; }

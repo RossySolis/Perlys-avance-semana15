@@ -1,0 +1,183 @@
+/* === productos.css === */
+
+/* Página productos */
+.productos {
+    font-family: 'Quicksand', sans-serif;
+    padding: 20px;
+    background-color: #fdf4fb;
+    overflow-x: hidden;
+}
+
+/* Imagen hero / portada */
+.productos .img-container img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+    animation: fadeInDown 1s ease forwards;
+}
+
+/* Hover hero */
+.productos .img-container img:hover {
+    transform: scale(1.05) rotate(-1deg);
+    box-shadow: 0 20px 35px rgba(0,0,0,0.3);
+}
+
+/* Grid de productos */
+.productos .grid-productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 0;
+}
+
+/* Tarjetas de productos */
+.productos .grid-productos .card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    width: 300px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    animation: fadeInUp 0.8s ease forwards;
+    cursor: pointer;
+}
+
+/* Hover tarjetas */
+.productos .grid-productos .card:hover {
+    transform: translateY(-10px) scale(1.05) rotate(-1deg);
+    box-shadow: 0 25px 35px rgba(0,0,0,0.3);
+    animation: pulse 1.5s infinite;
+}
+
+/* Imagen dentro de tarjetas */
+.productos .grid-productos .card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Botones dentro de las cards */
+.productos .card-body .btn-gradient {
+    margin-top: 10px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.productos .card-body .btn-gradient:hover {
+    transform: scale(1.1) rotate(-2deg);
+    background: linear-gradient(45deg, #ff4081, #e91e63);
+}
+
+/* Títulos y pestañas */
+.productos h2 {
+    color: #ff4081;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    animation: fadeIn 1s ease forwards;
+}
+
+/* Botones de pestañas */
+.productos .tabs button {
+    background: linear-gradient(45deg, #ff4081, #e91e63);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    margin: 4px;
+    transition: all 0.3s ease;
+    animation: gradientShift 3s ease infinite;
+}
+
+/* Hover botones */
+.productos .tabs button:hover {
+    transform: scale(1.15) rotate(-2deg);
+    animation: bounce 1s infinite, gradientShift 3s ease infinite;
+}
+
+/* Botón activo */
+.productos .tabs button.active {
+    background: linear-gradient(45deg, #f50057, #ff4081);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(245,0,87,0.4);
+    animation: pulse 1.5s infinite, gradientShift 3s ease infinite;
+}
+
+/* Botones flotantes de redes sociales */
+.productos .social-float {
+    position: fixed;
+    top: 40%;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 2000;
+}
+
+.productos .social-float a {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 24px;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s, opacity 0.3s, box-shadow 0.3s;
+}
+
+.productos .social-float a:hover {
+    transform: scale(1.3) rotate(10deg);
+    opacity: 0.9;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    animation: pulse 1.5s infinite;
+}
+
+/* Colores redes sociales */
+.productos .facebook { background-color: #1877f2; }
+.productos .instagram { background-color: #e4405f; }
+.productos .whatsapp { background-color: #25d366; }
+.productos .tiktok { background-color: #000; }
+
+/* Animaciones Keyframes */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Animación pulsante */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Animación rebote para botones */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-6px); }
+    60% { transform: translateY(-3px); }
+}
+
+/* Animación gradiente botones */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}

@@ -1,0 +1,122 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/estilos.css";
+import Footer from "../components/footer.astro";
+---
+
+<Layout>
+
+  <!-- Espaciado superior fijo -->
+  <main style="padding-top: 70px;"></main>
+
+  <!-- Contenido principal de la página de contacto -->
+  <main class="contacto-page">
+
+    <!-- Hero Contacto -->
+    <section class="text-center py-5 bg-gradient">
+      <div class="container">
+        <h1 class="display-4 fw-bold text-white">Contáctanos</h1>
+        <p class="lead text-white">Estamos aquí para ayudarte y responder tus dudas</p>
+      </div>
+    </section>
+
+    <!-- Formulario de Contacto -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <form class="contact-form p-4 rounded-4 shadow" action="#" method="POST">
+              <h3 class="mb-4 text-center" style="color:#d62dc8;">Formulario de Contacto</h3>
+
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu nombre" required />
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico:</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="usuario@ejemplo.com" required />
+              </div>
+
+              <div class="mb-3">
+                <label for="telefono" class="form-label">Teléfono:</label>
+                <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Número de contacto" />
+              </div>
+
+              <div class="mb-3">
+                <label for="mensaje" class="form-label">Mensaje:</label>
+                <textarea class="form-control" id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100" style="background-color: #d62dc8; border-radius: 30px;">
+                Enviar Mensaje
+              </button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Botones flotantes -->
+    <div class="social-float">
+      <a href="https://www.facebook.com/p/Perlys-Moda-100064165537001/?locale=uk_UA" target="_blank" class="facebook">
+        <i class="fa-brands fa-facebook"></i>
+      </a>
+      <a href="https://instagram.com" target="_blank" class="instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://wa.me/51940042294" target="_blank" class="whatsapp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+      <a href="https://www.tiktok.com/@modaperlys?_t=8p60CYtJXOQ&_r=1" target="_blank" class="tiktok">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="/js/bootstrap.bundle.min.js" is:inline></script>
+
+    <!-- Mensaje de éxito (se agrega dinámicamente con JS) -->
+    <div id="mensajeExito" class="text-center mt-4 hidden p-4 rounded bg-pink-100 text-pink-700">
+      <p>¡Tu mensaje ha sido enviado, gracias por tu interés!</p>
+      <button id="volverInicio" class="btn mt-2" style="background-color:#d62dc8; color:white;">Volver a inicio</button>
+      <button id="nuevoMensaje" class="btn mt-2" style="background-color:#ff6fa0; color:white;">Enviar otro mensaje</button>
+    </div>
+
+    <!-- Lógica del formulario -->
+    <script is:inline >
+      const form = document.querySelector('.contact-form');
+      const mensajeExito = document.getElementById('mensajeExito');
+      const volverInicio = document.getElementById('volverInicio');
+      const nuevoMensaje = document.getElementById('nuevoMensaje');
+
+      if(form && mensajeExito && volverInicio && nuevoMensaje) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          form.classList.add('hidden');
+          mensajeExito.classList.remove('hidden');
+        });
+
+        volverInicio.addEventListener('click', () => {
+          window.location.href = '/';
+        });
+
+        nuevoMensaje.addEventListener('click', () => {
+          form.reset();
+          form.classList.remove('hidden');
+          mensajeExito.classList.add('hidden');
+        });
+      }
+    </script>
+
+  </main>
+
+  <Footer />
+
+</Layout>
+
+<style>
+  @import '../styles/contacto.css';
+  .hidden { display: none; }
+</style>

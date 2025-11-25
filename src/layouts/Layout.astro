@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title><slot name="title" /></title>
+
+    <!-- ✅ Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+  </head>
+
+  <body class="bg-gradient-to-r from-pink-100 via-pink-200 to-pink-100 font-sans text-gray-800">
+
+    <!-- ✅ Mueve aquí la barra superior -->
+    <div class="component-headband">
+      <div class="headband-content flex justify-between items-center px-4 py-2">
+        <div class="menu-hamburger relative">
+          <input type="checkbox" id="menu-toggle" class="hidden">
+          <label for="menu-toggle" class="menu-icon cursor-pointer">
+            <img src="/img/menu.png" alt="Menú">
+          </label>
+
+          <ul class="menu-dropdown absolute hidden bg-white shadow-lg mt-2 rounded-lg p-4 space-y-2">
+            <li><a href="/">🏠 Inicio</a></li>
+            <li><a href="/productos">👗 Productos</a></li>
+            <li><a href="/nosotros">💖 Nosotros</a></li>
+            <li><a href="/cotizacion">🛍️ Cotizar</a></li>
+            <li><a href="/ini_sesion">👩‍💻 Mi Cuenta</a></li>
+            <li><a href="/contacto">📞 Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="headband-login space-x-2 text-sm">
+          <a href="/ini_sesion" class="hover:underline">Inicio de Sesión</a>
+          <span class="text-gray-400">|</span>
+          <a href="/new_user" class="hover:underline">Crear Usuario</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ Aquí se renderiza tu página -->
+    <slot />
+
+    <!-- ✅ Bootstrap JS -->
+    <script src="/js/bootstrap.bundle.min.js" is:inline></script>
+  </body>
+</html>
+
+<style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+

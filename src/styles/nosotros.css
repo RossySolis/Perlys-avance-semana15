@@ -1,0 +1,176 @@
+/* === nosotros.css Mejorado === */
+
+/* Variables de color */
+:root {
+  --color-primario: #b30059;
+  --color-secundario: #ff6fa0;
+  --color-terciario: #ff99cc;
+  --color-fondo: #fad0c4;
+  --color-footer: #2c003e;
+  --color-texto: #333;
+  --color-blanco: #fff;
+}
+
+/* Fondo general animado */
+.nosotros {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(-45deg, #ffdde1, #ee9ca7, #fad0c4, #fbc2eb);
+    background-size: 400% 400%;
+    animation: fondoAnimado 15s ease infinite;
+    color: var(--color-texto);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Animación fondo */
+@keyframes fondoAnimado {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Animaciones reutilizables */
+.nosotros .animate-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s forwards ease;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Navbar */
+.nosotros .navbar {
+    background: rgba(255,255,255,0.85) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Hero */
+.nosotros section.bg-primary {
+    background: linear-gradient(135deg, var(--color-primario), var(--color-secundario), var(--color-terciario));
+    color: var(--color-blanco);
+    animation: fadeInHero 1.5s ease;
+}
+
+@keyframes fadeInHero {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Contenido principal */
+.nosotros section .container h2 {
+    color: var(--color-primario);
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.nosotros section .container p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    text-align: justify;
+    animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Imágenes */
+.nosotros img.rounded.shadow {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.nosotros img.rounded.shadow:hover {
+    transform: scale(1.05) rotate(-1deg);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+/* Valores (cards) */
+.nosotros .card {
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nosotros .card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.nosotros .card-title {
+    color: var(--color-primario);
+    font-weight: bold;
+}
+
+.nosotros .card i {
+    transition: transform 0.3s ease;
+}
+
+.nosotros .card:hover i {
+    transform: scale(1.2);
+}
+
+/* Footer */
+.nosotros footer {
+    background: linear-gradient(135deg, var(--color-footer), #4b006f);
+    color: var(--color-blanco);
+    text-align: center;
+    padding: 30px 10px;
+    font-size: 0.95rem;
+}
+
+.nosotros footer a {
+    color: var(--color-terciario);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nosotros footer a:hover {
+    color: #ffd6f0;
+}
+
+/* Botones flotantes */
+.nosotros .social-float {
+    position: fixed;
+    top: 40%;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 2000;
+}
+
+.nosotros .social-float a {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 24px;
+    color: var(--color-blanco);
+    text-decoration: none;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    transition: transform 0.4s, box-shadow 0.4s, opacity 0.3s;
+}
+
+.nosotros .social-float a:hover {
+    transform: translateY(-3px) scale(1.15);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+    opacity: 1;
+}
+
+/* Colores redes sociales */
+.nosotros .facebook { background: #1877f2; }
+.nosotros .instagram { background: #e4405f; }
+.nosotros .whatsapp { background: #25d366; }
+.nosotros .tiktok { background: #000; }
