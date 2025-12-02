@@ -1,0 +1,218 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/footer.astro';
+import '../styles/estilos.css';
+import { supabase } from '../lib/supabase.ts';
+---
+
+<Layout title="Mi Carrito">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+/>
+
+<main class="min-h-screen bg-pink-50 py-10">
+  <div class="container mx-auto px-4 max-w-5xl">
+
+    <div id="cart-container" class="bg-white rounded-2xl shadow-lg p-6">
+
+      <div id="empty-cart" class="text-center py-16 hidden">
+        <div class="text-6xl mb-4">🛍️</div>
+        <h2 class="text-2xl font-semibold text-gray-700 mb-2">Tu carrito está vacío</h2>
+        <p class="text-gray-500 mb-6">¡Agrega productos para comenzar tu compra!</p>
+        <a href="/" class="inline-block bg-pink-600 text-white py-2 px-6 rounded-full hover:bg-pink-700 transition-colors">
+          Ver productos
+        </a>
+      </div>
+
+      <div id="cart-items" class="space-y-4"></div>
+
+      <div id="cart-summary" class="hidden mt-8 pt-6 border-t border-gray-200">
+        <div class="flex justify-between items-center mb-4">
+          <span class="text-lg font-semibold">Subtotal:</span>
+          <span class="text-lg font-bold text-pink-600">S/<span id="cart-subtotal">0.00</span></span>
+        </div>
+
+        <div class="flex justify-between items-center mb-6">
+          <span class="text-xl font-bold">Total:</span>
+          <span class="text-2xl font-bold text-pink-700">S/<span id="cart-total">0.00</span></span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <button id="clear-cart" class="flex-1 bg-gray-200 text-gray-700 py-3 px-6 rounded-full hover:bg-gray-300 transition-colors font-semibold">Vaciar carrito</button>
+          <a href="/pedidos" class="flex-1 bg-pink-600 text-white py-3 px-6 rounded-full hover:bg-pink-700 transition-colors font-semibold text-center">Realizar pedido</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-6">
+      <a href="/" class="text-pink-600 hover:text-pink-700 font-semibold">← Seguir comprando</a>
+    </div>
+
+  </div>
+</main>
+
+<Footer />
+
+<!-- Toast -->
+<div id="toast" class="fixed bottom-5 right-5 bg-pink-600 text-white px-4 py-2 rounded-lg shadow-lg opacity-0 transition-opacity duration-300"></div>
+
+<script type="module">
+import { supabase } from '../lib/supabase.ts';
+
+let cart = [];
+let products = []; // Se llenará con fetch de productos reales
+let user = null;   // Usuario logueado, si aplica
+
+// --- 1️⃣ Inicializar carrito y usuario ---
+async function initCart() {
+  const { data: { user: supUser } } = await supabase.auth.getUser();
+  user = supUser;
+
+  if (user) {
+    // Obtener carrito de Supabase
+    const { data: dbCart } = await supabase
+      .from('carritos')
+      .select('data')
+      .eq('user_id', user.id)
+      .single();
+    cart = dbCart?.data || [];
+  } else {
+    // Carrito localStorage
+    cart = JSON.parse(localStorage.getItem('cart')) || [];
+  }
+
+  renderCart();
+}
+
+// --- 2️⃣ Guardar carrito ---
+function saveLocalCart(cartData) {
+  localStorage.setItem('cart', JSON.stringify(cartData));
+}
+
+async function saveCartSupabase(cartData) {
+  const { error } = await supabase
+    .from('carritos')
+    .upsert({ user_id: user.id, data: cartData });
+  if (error) console.error('Error guardando carrito Supabase:', error);
+}
+
+// --- 3️⃣ Función de agregar productos ---
+function addToCart(product) {
+  const item = cart.find(i => i.id === product.id);
+  if (item) item.quantity++;
+  else cart.push({ ...product, quantity: 1 });
+
+  if (user) saveCartSupabase(cart);
+  else saveLocalCart(cart);
+
+  renderCart();
+  showToast(`${product.nombre} agregado al carrito 🛒`);
+}
+
+// --- 4️⃣ Renderizar carrito ---
+function renderCart() {
+  const cartItems = document.getElementById('cart-items');
+  const empty = document.getElementById('empty-cart');
+  const summary = document.getElementById('cart-summary');
+  const subtotal = document.getElementById('cart-subtotal');
+  const total = document.getElementById('cart-total');
+
+  if (!cart.length) {
+    cartItems.innerHTML = '';
+    empty.classList.remove('hidden');
+    summary.classList.add('hidden');
+    return;
+  }
+
+  empty.classList.add('hidden');
+  summary.classList.remove('hidden');
+
+  cartItems.innerHTML = cart.map(item => `
+    <div class="flex items-center justify-between p-4 border rounded-xl">
+      <img src="${item.image}" class="w-20 h-20 rounded-lg object-cover"/>
+      <div class="flex-1 px-4">
+        <h3 class="font-semibold">${item.name}</h3>
+        <p class="text-pink-600">S/${item.price}</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <button class="dec" data-id="${item.id}">-</button>
+        <span>${item.quantity}</span>
+        <button class="inc" data-id="${item.id}">+</button>
+      </div>
+      <button class="del text-red-500" data-id="${item.id}">🗑</button>
+    </div>
+  `).join('');
+
+  const totalAmount = cart.reduce((t, i) => t + i.price * i.quantity, 0).toFixed(2);
+  subtotal.textContent = totalAmount;
+  total.textContent = totalAmount;
+
+  document.querySelectorAll('.inc').forEach(b => b.onclick = () => updateQuantity(b.dataset.id, 1));
+  document.querySelectorAll('.dec').forEach(b => b.onclick = () => updateQuantity(b.dataset.id, -1));
+  document.querySelectorAll('.del').forEach(b => b.onclick = () => removeItem(b.dataset.id));
+}
+
+// --- 5️⃣ Actualizar cantidad ---
+function updateQuantity(id, change) {
+  const item = cart.find(i => i.id === id);
+  if (!item) return;
+
+  item.quantity += change;
+  if (item.quantity <= 0) cart = cart.filter(i => i.id !== id);
+
+  if (user) saveCartSupabase(cart);
+  else saveLocalCart(cart);
+
+  renderCart();
+}
+
+// --- 6️⃣ Eliminar producto ---
+function removeItem(id) {
+  cart = cart.filter(i => i.id !== id);
+  if (user) saveCartSupabase(cart);
+  else saveLocalCart(cart);
+  renderCart();
+}
+
+// --- 7️⃣ Vaciar carrito ---
+function clearCart() {
+  cart = [];
+  if (user) saveCartSupabase(cart);
+  else saveLocalCart(cart);
+  renderCart();
+}
+
+// --- 8️⃣ Toast ---
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('opacity-100');
+  setTimeout(() => toast.classList.remove('opacity-100'), 2000);
+}
+
+// --- 9️⃣ Botones de agregar desde catálogo (ejemplo) ---
+document.addEventListener('DOMContentLoaded', async () => {
+  // Fetch de productos reales desde Supabase
+  const { data: dbProducts } = await supabase.from('productos').select('*');
+  products = dbProducts.map(p => ({
+    id: p.id,
+    nombre: p.nombre,
+    price: parseFloat(p.precio),
+    image: p.image_url
+  }));
+
+  initCart();
+
+  document.getElementById('clear-cart').onclick = clearCart;
+
+  // Conectar botones de catálogo si existen
+  document.querySelectorAll('.add-to-cart').forEach(btn => {
+    btn.onclick = () => {
+      const product = products.find(p => p.id === btn.dataset.id);
+      if (product) addToCart(product);
+    };
+  });
+});
+</script>
